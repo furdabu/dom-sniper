@@ -124,3 +124,7 @@ public/_locales/    manifest で使う文言(説明文、ショートカット�
 1. `lib/i18n/en.ts` を `lib/i18n/fr.ts` のようにコピーして翻訳します。足りないキーがあれば `Messages` 型のエラーでわかります。
 2. `lib/i18n/index.ts` の `MESSAGES` と `LOCALE_NAMES` に登録します。
 3. Chrome が表示する拡張機能の説明文のために、`public/_locales/<言語コード>/messages.json` を追加します。
+
+## ライセンス
+
+[MIT](LICENSE)

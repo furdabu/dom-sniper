@@ -2,6 +2,7 @@
   "name": "dom-sniper",
   "description": "Chrome extension that copies an element's URL, DOM path, position, and HTML in an AI-friendly format",
   "private": true,
+  "license": "MIT",
   "version": "0.1.0",
   "type": "module",
   "packageManager": "pnpm@10.33.0",

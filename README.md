@@ -124,3 +124,7 @@ GitHub Actions builds every push to `main` and every pull request. When the `ver
 1. Copy `lib/i18n/en.ts` to a new file such as `lib/i18n/fr.ts` and translate it. The `Messages` type reports any missing key.
 2. Register it in `MESSAGES` and `LOCALE_NAMES` in `lib/i18n/index.ts`.
 3. Add `public/_locales/<code>/messages.json` for the extension description shown by Chrome.
+
+## License
+
+[MIT](LICENSE)
