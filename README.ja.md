@@ -32,7 +32,14 @@ HTML Element: <div class="pricing-card pricing-card--featured">Pro $8 / month Fo
 
 ## インストール
 
-Chrome ウェブストアでの公開は準備中です。公開までは、ソースからビルドして使ってください。
+DOM Sniper は、まだ Chrome ウェブストアで公開されていません。公開までは、リリースの zip を使うか、ソースからビルドしてください。Chrome 114 以降が必要です。
+
+### リリースから
+
+1. [最新のリリース](https://github.com/furdabu/dom-sniper/releases/latest)から `dom-sniper-<バージョン>-chrome.zip` をダウンロードして展開します。
+2. `chrome://extensions` を開き、**デベロッパーモード**を有効にして、**パッケージ化されていない拡張機能を読み込む**から展開したフォルダを選びます。
+
+### ソースから
 
 Node.js 22 と [pnpm](https://pnpm.io/) が必要です。
 
@@ -41,7 +48,7 @@ pnpm install
 pnpm build
 ```
 
-ビルドできたら `chrome://extensions` を開き、**デベロッパーモード**を有効にして、**パッケージ化されていない拡張機能を読み込む**から `.output/chrome-mv3` フォルダを選びます。Chrome 114 以降が必要です。
+ビルドできたら、同じ手順で `.output/chrome-mv3` フォルダを読み込みます。
 
 ## 使い方
 
@@ -107,6 +114,10 @@ entrypoints/
 lib/                共通コード。保存、設定、メッセージ、翻訳
 public/_locales/    manifest で使う文言(説明文、ショートカット名)
 ```
+
+### リリース
+
+`main` への push とプルリクエストは、すべて GitHub Actions でビルドされます。`package.json` の `version` に対応するリリースがまだ無い場合は、同じ実行の中で `v<バージョン>` という名前の GitHub リリースが作られ、zip が添付されます。つまり、`version` を上げて `main` に push すればリリースされます。この zip は、そのまま Chrome ウェブストアにアップロードできます。
 
 ### 言語を追加する
 

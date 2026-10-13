@@ -32,7 +32,14 @@ The format follows the element picker in Cursor's built-in browser, with two dif
 
 ## Install
 
-The Chrome Web Store listing is in preparation. Until it is published, build the extension from source.
+DOM Sniper is not on the Chrome Web Store yet. Until it is, install it from a release or build it yourself. Chrome 114 or later is required.
+
+### From a release
+
+1. Download `dom-sniper-<version>-chrome.zip` from the [latest release](https://github.com/furdabu/dom-sniper/releases/latest) and unzip it.
+2. Open `chrome://extensions`, turn on **Developer mode**, choose **Load unpacked**, and select the unzipped folder.
+
+### From source
 
 You need Node.js 22 and [pnpm](https://pnpm.io/).
 
@@ -41,7 +48,7 @@ pnpm install
 pnpm build
 ```
 
-Then open `chrome://extensions`, turn on **Developer mode**, choose **Load unpacked**, and select the `.output/chrome-mv3` folder. Chrome 114 or later is required.
+Then load the `.output/chrome-mv3` folder the same way.
 
 ## Usage
 
@@ -107,6 +114,10 @@ entrypoints/
 lib/                Code shared between them: storage, settings, messages, i18n
 public/_locales/    Strings used by the manifest (description, shortcut name)
 ```
+
+### Releasing
+
+GitHub Actions builds every push to `main` and every pull request. When the `version` in `package.json` has no release yet, the same run publishes a GitHub release named `v<version>` with the zip attached, so releasing is: bump `version`, then push to `main`. That zip can be uploaded to the Chrome Web Store as is.
 
 ### Adding a language
 
