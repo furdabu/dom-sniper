@@ -29,6 +29,8 @@ jobs:
         with:
           name: extension
           path: .output/*.zip
+          # .output is a dot directory, which is skipped by default
+          include-hidden-files: true
           if-no-files-found: error
 
   # Publishes a GitHub release the first time a package.json version reaches main.
