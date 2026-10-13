@@ -1,0 +1,129 @@
+@use 'sass:color';
+
+$accent: #f43f5e;
+$surface: #18181b;
+$on-surface: #fafafa;
+$muted: #a1a1aa;
+$font-sans: system-ui, -apple-system, 'Segoe UI', 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+$font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+@mixin chip {
+  position: fixed;
+  box-sizing: border-box;
+  border-radius: 6px;
+  background: $surface;
+  color: $on-surface;
+  box-shadow: 0 4px 16px rgb(0 0 0 / 28%);
+  white-space: nowrap;
+}
+
+@mixin bottom-center {
+  bottom: 16px;
+  left: 50%;
+  max-width: calc(100vw - 16px);
+  transform: translateX(-50%);
+}
+
+// ページ側の CSS や popover の既定スタイルに負けないよう、すべて !important で固定する
+:host {
+  all: initial !important;
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 2147483647 !important;
+  display: block !important;
+  pointer-events: none !important;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  border: 1.5px solid $accent;
+  border-radius: 2px;
+  background: color.change($accent, $alpha: 0.14);
+}
+
+.label {
+  @include chip;
+
+  top: 0;
+  left: 0;
+  display: flex;
+  gap: 8px;
+  max-width: calc(100vw - 8px);
+  padding: 3px 7px;
+  font: 500 11px / 1.5 $font-mono;
+
+  &__name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__size {
+    flex: none;
+    color: $muted;
+  }
+}
+
+.hint {
+  @include chip;
+  @include bottom-center;
+
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  padding: 6px 12px;
+  font: 12px / 1.5 $font-sans;
+  opacity: 0.92;
+
+  kbd {
+    min-width: 1.5em;
+    padding: 0 4px;
+    border: 1px solid color.change($on-surface, $alpha: 0.28);
+    border-radius: 4px;
+    font: 11px / 1.5 $font-mono;
+    text-align: center;
+  }
+
+  &__separator {
+    color: $muted;
+  }
+}
+
+.toast {
+  @include chip;
+  @include bottom-center;
+
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 8px 14px;
+  font: 500 13px / 1.5 $font-sans;
+  white-space: normal;
+  animation: toast-in 160ms ease-out;
+
+  &::before {
+    flex: none;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #4ade80;
+    content: '';
+  }
+
+  &--error::before {
+    background: $accent;
+  }
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 8px);
+  }
+}

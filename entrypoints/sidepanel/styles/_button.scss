@@ -1,0 +1,116 @@
+@use 'mixins' as *;
+
+.button {
+  display: inline-flex;
+  gap: space(1.5);
+  align-items: center;
+  justify-content: center;
+  min-height: 30px;
+  padding: 0 space(3);
+  border: 1px solid var(--border);
+  border-radius: $radius;
+  background: var(--bg);
+  color: var(--text);
+  font: inherit;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color 120ms,
+    border-color 120ms,
+    color 120ms;
+
+  @include focus-ring;
+
+  &:hover {
+    background: var(--surface);
+  }
+
+  &--primary {
+    border-color: var(--accent-solid);
+    background: var(--accent-solid);
+    color: #fff;
+
+    &:hover {
+      border-color: var(--accent-solid-hover);
+      background: var(--accent-solid-hover);
+    }
+
+    // 選択モード中は「押し込まれた」見た目にして、もう一度押すと解除できることを示す
+    &.is-active {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+  }
+
+  &--block {
+    width: 100%;
+    min-height: 36px;
+  }
+
+  &--icon,
+  &--text {
+    border-color: transparent;
+    background: transparent;
+    color: var(--text-muted);
+
+    &:hover {
+      background: var(--surface-hover);
+      color: var(--text);
+    }
+  }
+
+  &--icon {
+    width: 28px;
+    min-height: 28px;
+    padding: 0;
+  }
+
+  &--text {
+    min-height: 26px;
+    padding: 0 space(2);
+  }
+
+  &:disabled {
+    opacity: 0.45;
+    pointer-events: none;
+  }
+
+  &--danger:hover,
+  &--text#{&}--danger {
+    color: var(--danger);
+  }
+
+  &__kbd {
+    margin-left: space(1);
+    padding: 0 space(1.5);
+    border-radius: 4px;
+    background: rgb(255 255 255 / 20%);
+    font: 11px / 1.6 $font-mono;
+  }
+}
+
+// 選択ボタンと設定への入口を横に並べる
+.toolbar {
+  display: flex;
+  gap: space(2);
+  align-items: flex-start;
+
+  &__settings {
+    flex: none;
+    width: 36px;
+    min-height: 36px;
+  }
+}
+
+.picker {
+  flex: 1;
+  min-width: 0;
+
+  &__error {
+    margin-top: space(2);
+    color: var(--danger);
+    font-size: 12px;
+  }
+}

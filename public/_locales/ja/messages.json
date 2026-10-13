@@ -1,0 +1,8 @@
+{
+  "extDescription": {
+    "message": "ページ上の要素を選択して、URL・DOM Path・位置・HTML を AI に渡しやすい形でコピー。履歴はサイドパネルで検索できます。"
+  },
+  "commandToggle": {
+    "message": "要素選択モードの開始 / 終了"
+  }
+}

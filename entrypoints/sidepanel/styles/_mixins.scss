@@ -1,0 +1,20 @@
+$font-sans: system-ui, -apple-system, 'Segoe UI', 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+$font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+$radius: 6px;
+
+@function space($n) {
+  @return $n * 4px;
+}
+
+@mixin truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin focus-ring {
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+  }
+}

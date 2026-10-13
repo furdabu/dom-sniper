@@ -1,0 +1,101 @@
+@use 'mixins' as *;
+
+.settings {
+  display: flex;
+  flex-direction: column;
+  gap: space(6);
+  padding: space(3);
+
+  &__title {
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  &__section {
+    display: flex;
+    flex-direction: column;
+    gap: space(2);
+  }
+
+  &__heading {
+    color: var(--text-muted);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  &__hint {
+    color: var(--text-muted);
+    font-size: 12px;
+  }
+
+  &__row {
+    display: flex;
+    gap: space(3);
+    align-items: center;
+    justify-content: space-between;
+    min-height: 34px;
+  }
+
+  // キーの一覧と開始ショートカットの間を区切る
+  &__footer {
+    display: flex;
+    justify-content: flex-end;
+    padding-bottom: space(3);
+    border-bottom: 1px solid var(--border);
+  }
+}
+
+.select {
+  width: 100%;
+  height: 32px;
+  padding: 0 space(2);
+  border: 1px solid var(--border);
+  border-radius: $radius;
+  background: var(--bg);
+  color: var(--text);
+  font: inherit;
+
+  @include focus-ring;
+}
+
+.keycap {
+  flex: none;
+  min-width: 56px;
+  height: 30px;
+  padding: 0 space(2.5);
+  border: 1px solid var(--border);
+  border-bottom-width: 2px;
+  border-radius: $radius;
+  background: var(--surface);
+  color: var(--text);
+  font: 500 12px / 1 $font-mono;
+  text-align: center;
+  cursor: pointer;
+
+  @include focus-ring;
+
+  &:hover {
+    background: var(--surface-hover);
+  }
+
+  &.is-recording {
+    border-color: var(--accent);
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-family: $font-sans;
+  }
+
+  // 変更できない表示専用のキー
+  &--static {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: default;
+
+    &:hover {
+      background: var(--surface);
+    }
+  }
+}

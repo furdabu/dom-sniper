@@ -1,0 +1,34 @@
+{
+  "name": "dom-sniper",
+  "description": "Chrome extension that copies an element's URL, DOM path, position, and HTML in an AI-friendly format",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "wxt",
+    "build": "wxt build",
+    "zip": "wxt zip",
+    "compile": "tsc --noEmit",
+    "icons": "node scripts/generate-icons.mjs",
+    "postinstall": "wxt prepare"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
+  },
+  "dependencies": {
+    "@tanstack/react-router": "^1.170.44",
+    "idb": "^8.0.4",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@wxt-dev/module-react": "^1.2.2",
+    "sass": "^1.105.1",
+    "typescript": "^7.0.2",
+    "wxt": "^0.21.4"
+  }
+}

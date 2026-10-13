@@ -1,0 +1,8 @@
+{
+  "extDescription": {
+    "message": "Pick any element and copy its URL, DOM path, position, and HTML for your AI assistant. Browse past captures in the side panel."
+  },
+  "commandToggle": {
+    "message": "Start or stop element selection"
+  }
+}

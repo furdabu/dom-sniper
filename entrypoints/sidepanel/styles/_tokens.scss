@@ -1,0 +1,48 @@
+@use 'sass:color';
+
+$light: (
+  bg: #fff,
+  surface: #f4f4f5,
+  surface-hover: #e8e8eb,
+  border: #e4e4e7,
+  text: #18181b,
+  text-muted: #71717a,
+  accent: #e11d48,
+  accent-soft: color.change(#e11d48, $alpha: 0.1),
+  accent-solid: #e11d48,
+  accent-solid-hover: #be123c,
+  danger: #dc2626,
+  success: #16a34a,
+);
+
+$dark: (
+  bg: #18181b,
+  surface: #27272a,
+  surface-hover: #35353a,
+  border: #3f3f46,
+  text: #f4f4f5,
+  text-muted: #a1a1aa,
+  accent: #fb7185,
+  accent-soft: color.change(#fb7185, $alpha: 0.14),
+  accent-solid: #e11d48,
+  accent-solid-hover: #f43f5e,
+  danger: #f87171,
+  success: #4ade80,
+);
+
+// accent は文字や枠線用でテーマごとに明るさを変える。accent-solid は白文字を載せる塗り用
+@mixin theme($tokens) {
+  @each $name, $value in $tokens {
+    --#{$name}: #{$value};
+  }
+}
+
+:root {
+  color-scheme: light dark;
+
+  @include theme($light);
+
+  @media (prefers-color-scheme: dark) {
+    @include theme($dark);
+  }
+}
